@@ -12,6 +12,10 @@ GET http://localhost:5203/api/livro/listar
 ### Buscar Livro
 GET http://localhost:5203/api/livro/buscar/Simples II
 
+
+### Buscar mais emprestado 
+GET http://localhost:5203/api/livro/maisemprestado
+
 ### Emprestar Livro
 PUT http://localhost:5203/api/livro/emprestar/3
 

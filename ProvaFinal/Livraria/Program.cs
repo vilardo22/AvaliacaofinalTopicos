@@ -3,7 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTudo",
+        builder => builder.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 var app = builder.Build();
+// 2. Adicione isso LOGO APÓS o app.Build();
+app.UseCors("PermitirTudo");
 
 app.MapPost("/api/livro/cadastrar",  ([FromBody] Livro livro, [FromServices] AppDbContext ctx)=>
 {
@@ -41,6 +50,23 @@ app.MapGet("/api/livro/buscar/{nome}",
     return Results.NotFound("Livro não encontrado");
 });
 
+app.MapGet("/api/livro/maisemprestado", ([FromServices] AppDbContext ctx)=>
+{
+    Livro? maisEmprestado = ctx.Livros
+    .OrderByDescending(l => l.QtdEmprestimo)
+    .FirstOrDefault();
+    if (maisEmprestado is not null)
+    {
+        return Results.Ok(maisEmprestado);
+    }
+    return Results.NotFound("Nenhum livro encontrado no banco de dados.");
+});
+
+
+
+
+
+
 app.MapPut("/api/livro/emprestar/{id}", ([FromRoute] int id, [FromServices] AppDbContext ctx) =>
 {
     Livro? resultado = ctx.Livros.Find(id);
@@ -50,6 +76,7 @@ app.MapPut("/api/livro/emprestar/{id}", ([FromRoute] int id, [FromServices] AppD
         if (resultado.EstaDisponivel == true)
         {
             resultado.EstaDisponivel = false;
+            resultado.QtdEmprestimo++;
             ctx.Livros.Update(resultado);
             ctx.SaveChanges();
             return Results.Ok("Livro Emprestado");

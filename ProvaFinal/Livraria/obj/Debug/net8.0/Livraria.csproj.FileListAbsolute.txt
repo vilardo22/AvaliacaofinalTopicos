@@ -132,3 +132,4 @@ C:\Users\laura\OneDrive\Área de Trabalho\AvaliacaofinalTopicos\ProvaFinal\Livra
 C:\Users\laura\OneDrive\Área de Trabalho\AvaliacaofinalTopicos\ProvaFinal\Livraria\obj\Debug\net8.0\Livraria.pdb
 C:\Users\laura\OneDrive\Área de Trabalho\AvaliacaofinalTopicos\ProvaFinal\Livraria\obj\Debug\net8.0\Livraria.genruntimeconfig.cache
 C:\Users\laura\OneDrive\Área de Trabalho\AvaliacaofinalTopicos\ProvaFinal\Livraria\obj\Debug\net8.0\ref\Livraria.dll
+C:\Users\laura\OneDrive\Área de Trabalho\AvaliacaofinalTopicos\ProvaFinal\Livraria\obj\Debug\net8.0\Livraria.sourcelink.json
