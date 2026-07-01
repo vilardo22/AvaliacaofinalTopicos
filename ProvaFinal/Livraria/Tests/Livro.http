@@ -1,0 +1,26 @@
+### Cadastrar livro
+POST http://localhost:5203/api/livro/cadastrar
+Content-Type: application/json
+
+{
+    "nome" : "Simples IV",
+    "autor" : "Diogo Deconto"
+}
+### Listar
+GET http://localhost:5203/api/livro/listar
+
+### Buscar Livro
+GET http://localhost:5203/api/livro/buscar/Simples II
+
+### Emprestar Livro
+PUT http://localhost:5203/api/livro/emprestar/3
+
+### Devolver Livro
+PUT http://localhost:5203/api/livro/devolver/3
+
+
+### Livros disponíveis
+GET http://localhost:5203/api/livro/disponiveis
+
+### Livros emprestados
+GET http://localhost:5203/api/livro/emprestados
